@@ -1,0 +1,8 @@
+name: Qrcode
+package: com.myextension.qrcode
+version:
+  number: 1
+  name: '1.0'
+authors:
+  - amar3219
+description: 'Live Variable Monitor Extension'
