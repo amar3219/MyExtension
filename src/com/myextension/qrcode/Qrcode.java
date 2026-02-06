@@ -1,0 +1,22 @@
+name: Build AIX
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build with Rush
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/shreyashsaitwal/rush-cli/main/scripts/install/install.sh | bash
+          /home/runner/.rush/bin/rush build
+      - name: Upload Result
+        uses: actions/upload-artifact@v3
+        with:
+          name: MyExtensionFile
+          path: "out/*.aix"
+  
